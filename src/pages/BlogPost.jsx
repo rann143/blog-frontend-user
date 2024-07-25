@@ -19,7 +19,7 @@ function BlogPost() {
     })
       .then((response) => {
         if (response.status >= 400) {
-          throw new Error("server error");
+          throw new Error(`Server Error ${response.status}`);
         }
 
         const json = response.json();
@@ -29,13 +29,16 @@ function BlogPost() {
       .then((json) => {
         setPosts(json);
       })
-      .catch((error) => setError(error))
+      .catch((error) => {
+        setError(error);
+        console.log(error);
+      })
       .finally(() => {
         setLoading(false);
       });
   }, []);
 
-  console.log(posts);
+  const firstName = localStorage.getItem("first name");
 
   const postsArray = posts.map((post) => {
     const key = uuidv4();
@@ -55,17 +58,32 @@ function BlogPost() {
     );
   });
 
+  console.log(error);
+
   if (loading) return <p>Loading...</p>;
+  if (error.message === "Server Error 401")
+    return (
+      <>
+        <p>You must Login to view page</p>
+
+        <Link to="/login">Login</Link>
+        <br />
+        <Link to="/sign-up">Sign Up</Link>
+        <br />
+        <Link to="/home">Home</Link>
+      </>
+    );
   if (error)
     return (
       <>
-        <p>A network error was encountered</p>
+        <p>A network error was encountered: {error.message}</p>
         <Link to="/home">Home</Link>
       </>
     );
 
   return (
     <div>
+      <p>{firstName}</p>
       <h1>Blog Posts</h1>
       <div>{postsArray}</div>
       <Link to="/home">Home</Link>

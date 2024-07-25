@@ -22,6 +22,9 @@ function LoginForm() {
       ...formData,
     };
 
+    localStorage.setItem("token", "");
+    localStorage.setItem("first name", "");
+
     try {
       let res = await fetch(
         "https://blogapi-production-c1ac.up.railway.app/blog/login",
@@ -39,6 +42,7 @@ function LoginForm() {
         setMessage("Login Success");
         console.log(resJson);
         localStorage.setItem("token", resJson.token);
+        localStorage.setItem("first name", resJson.user.first_name);
       } else {
         setMessage(resJson.error || "Some error occured");
       }
