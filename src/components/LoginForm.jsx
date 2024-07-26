@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import LogOutBtn from "./LogoutBtn";
 
-function LoginForm() {
+function LoginForm({ isToken, setIsToken }) {
   const [formData, setFormData] = useState({});
   const [message, setMessage] = useState("");
 
@@ -17,13 +18,14 @@ function LoginForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsToken(true);
 
     const dataToSubmit = {
       ...formData,
     };
 
-    localStorage.setItem("token", "");
-    localStorage.setItem("first name", "");
+    localStorage.removeItem("token");
+    localStorage.removeItem("first name");
 
     try {
       let res = await fetch(
@@ -77,6 +79,7 @@ function LoginForm() {
       </form>
       <p>{message ? message : ""}</p>
       <Link to="/home">Return Home</Link>
+      <div>{isToken ? <LogOutBtn setIsToken={setIsToken} /> : ""}</div>
     </div>
   );
 }

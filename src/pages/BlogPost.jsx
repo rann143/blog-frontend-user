@@ -61,7 +61,7 @@ function BlogPost() {
   console.log(error);
 
   if (loading) return <p>Loading...</p>;
-  if (error.message === "Server Error 401")
+  if (error && error.message === "Server Error 401")
     return (
       <>
         <p>You must Login to view page</p>
@@ -83,7 +83,6 @@ function BlogPost() {
 
   return (
     <div>
-      <p>{firstName}</p>
       <h1>Blog Posts</h1>
       <div>{postsArray}</div>
       <Link to="/home">Home</Link>
