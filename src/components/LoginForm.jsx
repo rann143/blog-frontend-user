@@ -2,7 +2,12 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import LogOutBtn from "./LogoutBtn";
 
-function LoginForm({ token, isLoggedIn, setIsLoggedIn }) {
+function LoginForm({
+  isLoggedIn,
+  setIsLoggedIn,
+  checkIfLoggedIn,
+  setExpirationDate,
+}) {
   const [formData, setFormData] = useState({});
   const [message, setMessage] = useState("");
 
@@ -23,9 +28,6 @@ function LoginForm({ token, isLoggedIn, setIsLoggedIn }) {
       ...formData,
     };
 
-    localStorage.removeItem("token");
-    localStorage.removeItem("first name");
-
     try {
       let res = await fetch(
         "https://blogapi-production-c1ac.up.railway.app/blog/login",
@@ -42,8 +44,13 @@ function LoginForm({ token, isLoggedIn, setIsLoggedIn }) {
         setFormData({});
         setMessage("Login Success");
         console.log(resJson);
+        localStorage.removeItem("token");
+        localStorage.removeItem("first name");
+        localStorage.removeItem("expiration date");
         localStorage.setItem("token", resJson.token);
         localStorage.setItem("first name", resJson.user.first_name);
+        localStorage.setItem("expiration date", new Date().getTime());
+        setExpirationDate(localStorage.getItem("expiration date"));
       } else {
         setMessage(resJson.error || "Some error occured");
       }
@@ -78,7 +85,6 @@ function LoginForm({ token, isLoggedIn, setIsLoggedIn }) {
       </form>
       <p>{message ? message : ""}</p>
       <Link to="/home">Return Home</Link>
-      <div>{token ? <LogOutBtn token={token} /> : ""}</div>
     </div>
   );
 }

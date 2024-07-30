@@ -2,16 +2,8 @@ import { Link } from "react-router-dom";
 import LogOutBtn from "../components/LogoutBtn";
 import { useState } from "react";
 
-function Home({ token }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  console.log(isLoggedIn);
-
-  const checkIfLoggedIn = () => {
-    if (!token && isLoggedIn === true) {
-      setIsLoggedIn(false);
-    }
-    console.log(isLoggedIn);
-  };
+function Home({ isLoggedIn, setIsLoggedIn, checkIfLoggedIn }) {
+  checkIfLoggedIn();
 
   const logOut = () => {
     setIsLoggedIn(false);
@@ -20,8 +12,6 @@ function Home({ token }) {
     localStorage.removeItem("user");
     checkIfLoggedIn();
   };
-
-  checkIfLoggedIn();
 
   return (
     <div>

@@ -41,24 +41,6 @@ function AllPosts() {
 
   const firstName = localStorage.getItem("first name");
 
-  // const postsArray = posts.map((post) => {
-  //   const key = uuidv4();
-  //   const timestamp = DateTime.fromISO(post.timestamp).toLocaleString(
-  //     DateTime.DATE_MED
-  //   );
-  //   const wordsArray = post.text.split(" ");
-  //   const firstWords = wordsArray.slice(0, 3).join(" ");
-  //   return (
-  //     <div key={key}>
-  //       <p>
-  //         {timestamp}, {post.author.first_name} {post.author.last_name}
-  //       </p>
-  //       <h3>{post.title}</h3>
-  //       <p>{firstWords}...</p>
-  //     </div>
-  //   );
-  // });
-
   const postsArray = posts.map((post) => {
     return <BlogPostCard thisPost={post} />;
   });
