@@ -1,4 +1,5 @@
 import { DateTime } from "luxon";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Card = styled.div`
@@ -27,7 +28,9 @@ function BlogPostCard({ thisPost }) {
         {timestamp}, {post.author.first_name} {post.author.last_name}
       </p>
       <div>
-        <h3>{post.title}</h3>
+        <h3>
+          <Link to={"/posts/" + post._id}>{post.title}</Link>
+        </h3>
         <p>{firstWords}</p>
       </div>
     </Card>

@@ -13,8 +13,11 @@ function Home({ isLoggedIn, setIsLoggedIn, checkIfLoggedIn }) {
     checkIfLoggedIn();
   };
 
+  const firstName = localStorage.getItem("first name");
+
   return (
     <div>
+      <p>{firstName ? `Hi ${firstName}!` : ""}</p>
       <h1>Welcome</h1>
       <p>I&apos;m super excited to have you here:</p>
       <Link to="/posts">Blog Posts</Link>

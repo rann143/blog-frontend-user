@@ -6,17 +6,18 @@ import SignUpForm from "./components/SignUpForm";
 import AllPosts from "./pages/AllPosts";
 import "./styles/App.css";
 import LoginForm from "./components/LoginForm";
+import BlogPostCard from "./components/BlogPostCard";
+import BlogPost from "./pages/BlogPost";
 
 function App() {
   // eslint-disable-next-line no-unused-vars
-  const { name } = useParams();
+  const { name, postId } = useParams();
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [expirationDate, setExpirationDate] = useState(
     localStorage.getItem("expiration date")
   );
 
   const token = localStorage.getItem("token");
-  const firstName = localStorage.getItem("first name");
 
   const checkIfLoggedIn = () => {
     if (!token && isLoggedIn === true) {
@@ -24,8 +25,6 @@ function App() {
     } else if (token && isLoggedIn === false) {
       setIsLoggedIn(true);
     }
-
-    console.log(isLoggedIn);
   };
 
   const logOutIfAfterExpiration = () => {
@@ -46,9 +45,9 @@ function App() {
 
   return (
     <>
-      <p>{firstName ? `Hi ${firstName}!` : ""}</p>
-
-      {name === "home" || !name ? (
+      {name === "posts" && postId ? (
+        <BlogPost postId={postId} />
+      ) : name === "home" || !name ? (
         <Home
           isLoggedIn={isLoggedIn}
           setIsLoggedIn={setIsLoggedIn}

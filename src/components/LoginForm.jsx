@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import LogOutBtn from "./LogoutBtn";
 
 function LoginForm({
@@ -10,6 +11,7 @@ function LoginForm({
 }) {
   const [formData, setFormData] = useState({});
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleInputChange = (event) => {
     const { target } = event;
@@ -42,8 +44,6 @@ function LoginForm({
       const resJson = await res.json();
       if (res.status === 200) {
         setFormData({});
-        setMessage("Login Success");
-        console.log(resJson);
         localStorage.removeItem("token");
         localStorage.removeItem("first name");
         localStorage.removeItem("expiration date");
@@ -51,6 +51,7 @@ function LoginForm({
         localStorage.setItem("first name", resJson.user.first_name);
         localStorage.setItem("expiration date", new Date().getTime());
         setExpirationDate(localStorage.getItem("expiration date"));
+        navigate("/home");
       } else {
         setMessage(resJson.error || "Some error occured");
       }
