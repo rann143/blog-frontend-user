@@ -11,7 +11,9 @@ import LogOutBtn from "./components/LogoutBtn";
 function App() {
   // eslint-disable-next-line no-unused-vars
   const { name } = useParams();
-  const [isToken, setIsToken] = useState();
+  const [isToken, setIsToken] = useState(false);
+
+  const token = localStorage.getItem("token");
 
   const firstName = localStorage.getItem("first name");
 
@@ -20,13 +22,13 @@ function App() {
       <p>{firstName ? `Hi ${firstName}!` : ""}</p>
 
       {name === "home" ? (
-        <Home isToken={isToken} setIsToken={setIsToken} />
+        <Home token={token} />
       ) : name === "posts" ? (
         <BlogPost />
       ) : name === "sign-up" ? (
         <SignUpForm />
       ) : name === "login" ? (
-        <LoginForm isToken={isToken} setIsToken={setIsToken} />
+        <LoginForm token={token} />
       ) : (
         <Home />
       )}

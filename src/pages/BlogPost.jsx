@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { DateTime } from "luxon";
+import BlogPostCard from "../components/BlogPostCard";
 
 function BlogPost() {
   const [posts, setPosts] = useState([]);
@@ -40,22 +41,26 @@ function BlogPost() {
 
   const firstName = localStorage.getItem("first name");
 
+  // const postsArray = posts.map((post) => {
+  //   const key = uuidv4();
+  //   const timestamp = DateTime.fromISO(post.timestamp).toLocaleString(
+  //     DateTime.DATE_MED
+  //   );
+  //   const wordsArray = post.text.split(" ");
+  //   const firstWords = wordsArray.slice(0, 3).join(" ");
+  //   return (
+  //     <div key={key}>
+  //       <p>
+  //         {timestamp}, {post.author.first_name} {post.author.last_name}
+  //       </p>
+  //       <h3>{post.title}</h3>
+  //       <p>{firstWords}...</p>
+  //     </div>
+  //   );
+  // });
+
   const postsArray = posts.map((post) => {
-    const key = uuidv4();
-    const timestamp = DateTime.fromISO(post.timestamp).toLocaleString(
-      DateTime.DATE_MED
-    );
-    const wordsArray = post.text.split(" ");
-    const firstWords = wordsArray.slice(0, 3).join(" ");
-    return (
-      <div key={key}>
-        <p>
-          {timestamp}, {post.author.first_name} {post.author.last_name}
-        </p>
-        <h3>{post.title}</h3>
-        <p>{firstWords}...</p>
-      </div>
-    );
+    return <BlogPostCard thisPost={post} />;
   });
 
   console.log(error);

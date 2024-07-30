@@ -1,11 +1,6 @@
-function LogOutBtn({ setIsToken }) {
-  const logOut = () => {
-    setIsToken(false);
-    localStorage.removeItem("token");
-    localStorage.removeItem("first name");
-    localStorage.removeItem("user");
-  };
+import { useState } from "react";
 
+function LogOutBtn({ logOut }) {
   return <button onClick={logOut}>Logout</button>;
 }
 

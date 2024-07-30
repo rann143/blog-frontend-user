@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import LogOutBtn from "./LogoutBtn";
 
-function LoginForm({ isToken, setIsToken }) {
+function LoginForm({ token, isLoggedIn, setIsLoggedIn }) {
   const [formData, setFormData] = useState({});
   const [message, setMessage] = useState("");
 
@@ -18,7 +18,6 @@ function LoginForm({ isToken, setIsToken }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setIsToken(true);
 
     const dataToSubmit = {
       ...formData,
@@ -79,7 +78,7 @@ function LoginForm({ isToken, setIsToken }) {
       </form>
       <p>{message ? message : ""}</p>
       <Link to="/home">Return Home</Link>
-      <div>{isToken ? <LogOutBtn setIsToken={setIsToken} /> : ""}</div>
+      <div>{token ? <LogOutBtn token={token} /> : ""}</div>
     </div>
   );
 }
