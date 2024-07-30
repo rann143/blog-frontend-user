@@ -3,15 +3,13 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Home from "./pages/Home";
 import SignUpForm from "./components/SignUpForm";
-import BlogPost from "./pages/BlogPost";
+import AllPosts from "./pages/AllPosts";
 import "./styles/App.css";
 import LoginForm from "./components/LoginForm";
-import LogOutBtn from "./components/LogoutBtn";
 
 function App() {
   // eslint-disable-next-line no-unused-vars
   const { name } = useParams();
-  const [isToken, setIsToken] = useState(false);
 
   const token = localStorage.getItem("token");
 
@@ -24,7 +22,7 @@ function App() {
       {name === "home" ? (
         <Home token={token} />
       ) : name === "posts" ? (
-        <BlogPost />
+        <AllPosts />
       ) : name === "sign-up" ? (
         <SignUpForm />
       ) : name === "login" ? (

@@ -4,13 +4,24 @@ import { useState } from "react";
 
 function Home({ token }) {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+  console.log(isLoggedIn);
+
+  const checkIfLoggedIn = () => {
+    if (!token && isLoggedIn === true) {
+      setIsLoggedIn(false);
+    }
+    console.log(isLoggedIn);
+  };
 
   const logOut = () => {
     setIsLoggedIn(false);
     localStorage.removeItem("token");
     localStorage.removeItem("first name");
     localStorage.removeItem("user");
+    checkIfLoggedIn();
   };
+
+  checkIfLoggedIn();
 
   return (
     <div>
@@ -18,14 +29,14 @@ function Home({ token }) {
       <p>I&apos;m super excited to have you here:</p>
       <Link to="/posts">Blog Posts</Link>
       <br />
-      {!token ? (
+      {!isLoggedIn ? (
         <>
           <Link to="/sign-up">Sign Up</Link> <br />
         </>
       ) : (
         ""
       )}
-      {!token ? (
+      {!isLoggedIn ? (
         <>
           <Link to="/login">Login</Link>
         </>
