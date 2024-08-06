@@ -61,6 +61,7 @@ function BlogPost({ postId }) {
   if (error)
     return (
       <>
+        <p>You probs need to sign up if you haven&apos;t already :&#41;</p>
         <p>A network error was encountered: {error.message}</p>
         <Link to="/home">Home</Link>
       </>
