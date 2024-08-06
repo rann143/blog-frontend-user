@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import CommentModalForm from "../components/CommentModalForm";
 
 function BlogPost({ postId }) {
   const [post, setPost] = useState({});
   const [comments, setComments] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     fetch(
@@ -34,26 +36,28 @@ function BlogPost({ postId }) {
       })
       .catch((error) => {
         setError(error);
-        console.log(error);
       })
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [modalOpen]);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
 
   const commentsArray = [...comments];
 
-  console.log(commentsArray);
-
-  const commentsDisplay = commentsArray.map((comment) => {
+  const commentsDisplay = commentsArray.map((comment, index) => {
     return (
-      <p>
+      <p key={index}>
         {comment.text} - <strong>{comment.author.username}</strong>
       </p>
     );
   });
 
   if (loading) return <p>Loading...</p>;
+
   if (error)
     return (
       <>
@@ -62,10 +66,16 @@ function BlogPost({ postId }) {
       </>
     );
 
+  if (modalOpen)
+    return <CommentModalForm postId={postId} setModalOpen={setModalOpen} />;
+
   return (
     <div>
       <h1>{post.title}</h1>
       <p>{post.text}</p>
+      <button type="button" onClick={openModal} style={{ margin: "10px" }}>
+        Post Comment
+      </button>
       <div>
         {" "}
         <strong>Comments:</strong> {commentsDisplay}

@@ -32,20 +32,15 @@ function AllPosts() {
       })
       .catch((error) => {
         setError(error);
-        console.log(error);
       })
       .finally(() => {
         setLoading(false);
       });
   }, []);
 
-  const firstName = localStorage.getItem("first name");
-
-  const postsArray = posts.map((post) => {
-    return <BlogPostCard thisPost={post} />;
+  const postsArray = posts.map((post, index) => {
+    return <BlogPostCard thisPost={post} key={index} />;
   });
-
-  console.log(error);
 
   if (loading) return <p>Loading...</p>;
   if (error && error.message === "Server Error 401")
