@@ -12,6 +12,10 @@ const Nav = styled.nav`
   width: 100%;
 `;
 
+const StyledH1 = styled.h1`
+  color: black;
+`;
+
 function Home({ isLoggedIn, setIsLoggedIn, checkIfLoggedIn }) {
   checkIfLoggedIn();
 
@@ -24,14 +28,17 @@ function Home({ isLoggedIn, setIsLoggedIn, checkIfLoggedIn }) {
   };
 
   const firstName = localStorage.getItem("first name");
-  // Photo by <a href="https://unsplash.com/@alicharmant?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">alicharmant</a> on <a href="https://unsplash.com/photos/a-person-standing-on-top-of-a-mountain-oObLAZvXSPM?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 
   return (
     <div className="home-page">
       <Nav>
         <div className="link-container">
-          <NavLink className="navlink">Home</NavLink>
-          <NavLink className="navlink">About</NavLink>
+          <NavLink to="/home" className="navlink">
+            Home
+          </NavLink>
+          <NavLink to="/about" className="navlink">
+            About
+          </NavLink>
           <NavLink to="/posts" className="navlink">
             Blog
           </NavLink>
@@ -66,7 +73,7 @@ function Home({ isLoggedIn, setIsLoggedIn, checkIfLoggedIn }) {
       <div className="home-container">
         <div className="home-content">
           <p>{firstName ? `Hi ${firstName}!` : ""}</p>
-          <h1 style={{ width: "100%" }}>Welcome to my World!</h1>
+          <StyledH1 style={{ width: "100%" }}>Welcome to my World!</StyledH1>
           <p className="quote-p">
             <q>
               Two things are infinite: the universe and human stupidity; and
@@ -76,6 +83,18 @@ function Home({ isLoggedIn, setIsLoggedIn, checkIfLoggedIn }) {
           </p>
         </div>
       </div>
+      <footer>
+        <div className="photo-credit">
+          Photo by{" "}
+          <a href="https://unsplash.com/@alicharmant?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
+            alicharmant
+          </a>{" "}
+          on{" "}
+          <a href="https://unsplash.com/photos/a-person-standing-on-top-of-a-mountain-oObLAZvXSPM?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
+            Unsplash
+          </a>
+        </div>
+      </footer>
     </div>
   );
 }

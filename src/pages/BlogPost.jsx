@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CommentModalForm from "../components/CommentModalForm";
+import "../styles/blogpost.css";
 
 function BlogPost({ postId }) {
   const [post, setPost] = useState({});
@@ -71,17 +72,22 @@ function BlogPost({ postId }) {
     return <CommentModalForm postId={postId} setModalOpen={setModalOpen} />;
 
   return (
-    <div>
+    <div className="postpage-container">
       <h1>{post.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: post.text }} />
-      <button type="button" onClick={openModal} style={{ margin: "10px" }}>
+      <div
+        className="blog-post"
+        dangerouslySetInnerHTML={{ __html: post.text }}
+      />
+
+      <Link to="/posts">Back to Posts</Link>
+      <button type="button" onClick={openModal} className="comment-btn">
         Post Comment
       </button>
+
       <div>
         {" "}
         <strong>Comments:</strong> {commentsDisplay}
       </div>
-      <Link to="/posts">Back</Link>
     </div>
   );
 }

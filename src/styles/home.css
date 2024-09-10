@@ -34,7 +34,6 @@
 
 h1 {
   text-align: center;
-  color: white;
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
@@ -42,4 +41,14 @@ h1 {
 .quote-p {
   color: whitesmoke;
   padding: 1rem;
+}
+
+.photo-credit {
+  justify-self: flex-end;
+  align-self: flex-start;
+  margin-top: 1rem;
+}
+
+a {
+  text-decoration: none;
 }

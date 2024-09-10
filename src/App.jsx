@@ -8,6 +8,7 @@ import "./styles/App.css";
 import LoginForm from "./components/LoginForm";
 import BlogPostCard from "./components/BlogPostCard";
 import BlogPost from "./pages/BlogPost";
+import AboutPage from "./pages/About";
 
 function App() {
   // eslint-disable-next-line no-unused-vars
@@ -80,6 +81,8 @@ function App() {
           <Link to="/home">Home</Link>
           {isLoggedIn ? <button onClick={logOut}>Logout</button> : ""}
         </div>
+      ) : name === "about" ? (
+        <AboutPage />
       ) : (
         <Home />
       )}

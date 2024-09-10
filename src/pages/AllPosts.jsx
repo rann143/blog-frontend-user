@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { DateTime } from "luxon";
 import BlogPostCard from "../components/BlogPostCard";
+import "../styles/blogpost.css";
+import styled from "styled-components";
+
+const StyledH1 = styled.h1`
+  color: black;
+`;
 
 function AllPosts() {
   const [posts, setPosts] = useState([]);
@@ -64,10 +70,18 @@ function AllPosts() {
     );
 
   return (
-    <div>
-      <h1>Blog Posts</h1>
-      <div>{postsArray}</div>
-      <Link to="/home">Home</Link>
+    <div className="all-posts-page">
+      <nav>
+        <NavLink to="/home" className="navlink">
+          Home
+        </NavLink>
+        <NavLink to="/about" className="navlink">
+          About
+        </NavLink>
+      </nav>
+
+      <StyledH1>Blog Posts</StyledH1>
+      <div className="posts-container">{postsArray}</div>
     </div>
   );
 }
