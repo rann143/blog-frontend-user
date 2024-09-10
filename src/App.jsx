@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import SignUpForm from "./components/SignUpForm";
 import AllPosts from "./pages/AllPosts";
@@ -16,6 +16,7 @@ function App() {
   const [expirationDate, setExpirationDate] = useState(
     localStorage.getItem("expiration date")
   );
+  const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
 
@@ -37,6 +38,15 @@ function App() {
     }
 
     return;
+  };
+
+  const logOut = () => {
+    setIsLoggedIn(false);
+    localStorage.removeItem("token");
+    localStorage.removeItem("first name");
+    localStorage.removeItem("user");
+    checkIfLoggedIn();
+    navigate("/home");
   };
 
   logOutIfAfterExpiration();
@@ -64,6 +74,12 @@ function App() {
           checkIfLoggedIn={checkIfLoggedIn}
           setExpirationDate={setExpirationDate}
         />
+      ) : name === "logout" ? (
+        <div>
+          <h2>Are you sure you would like to sign out?</h2>
+          <Link to="/home">Home</Link>
+          {isLoggedIn ? <button onClick={logOut}>Logout</button> : ""}
+        </div>
       ) : (
         <Home />
       )}
