@@ -20,8 +20,6 @@ function BlogPostCard({ thisPost }) {
   const timestamp = DateTime.fromISO(post.timestamp).toLocaleString(
     DateTime.DATE_MED
   );
-  const wordsArray = post.text.split(" ");
-  const firstWords = wordsArray.slice(0, 3).join(" ") + "...";
   return (
     <Card>
       <p>
@@ -31,7 +29,6 @@ function BlogPostCard({ thisPost }) {
         <h3>
           <Link to={"/posts/" + post._id}>{post.title}</Link>
         </h3>
-        <p>{firstWords}</p>
       </div>
     </Card>
   );

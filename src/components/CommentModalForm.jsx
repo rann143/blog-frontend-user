@@ -40,11 +40,11 @@ function CommentModalForm({ postId, setModalOpen }) {
         setMessage("Success! Comment Posted");
         setModalOpen(false);
       } else {
-        setMessage(resJson.error || "Some error occured");
+        console.log(resJson.error);
       }
     } catch (err) {
       console.error(err);
-      setMessage("An error occured while submitting the form: " + err.message);
+      setMessage("You must be logged in to post a comment");
     }
   };
 

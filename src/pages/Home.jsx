@@ -33,7 +33,7 @@ function Home({ isLoggedIn, setIsLoggedIn, checkIfLoggedIn }) {
           <NavLink className="navlink">Home</NavLink>
           <NavLink className="navlink">About</NavLink>
           <NavLink to="/posts" className="navlink">
-            Blog Posts
+            Blog
           </NavLink>
         </div>
 
