@@ -71,8 +71,8 @@ function AllPosts() {
 
   return (
     <div className="all-posts-page">
-      <nav>
-        <NavLink to="/home" className="navlink">
+      <nav className="blog-nav">
+        <NavLink to="/home" className="blog-navlink">
           Home
         </NavLink>
         <NavLink to="/about" className="navlink">

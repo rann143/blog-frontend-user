@@ -17,8 +17,8 @@
   align-items: start;
 }
 
-nav,
-.navlink {
+.blog-nav,
+.blog-navlink {
   text-decoration: none;
   align-self: flex-start;
   padding: 0.3rem;
