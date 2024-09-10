@@ -41,6 +41,12 @@ h1 {
 .quote-p {
   color: whitesmoke;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.quote-p > span {
+  align-self: flex-end;
 }
 
 .photo-credit {

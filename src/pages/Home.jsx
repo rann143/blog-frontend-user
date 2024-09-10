@@ -79,7 +79,8 @@ function Home({ isLoggedIn, setIsLoggedIn, checkIfLoggedIn }) {
               Two things are infinite: the universe and human stupidity; and
               I&apos;m not sure about the universe.
             </q>
-            <br />- Albert Einstein
+            <br />
+            <span>- Albert Einstein</span>
           </p>
         </div>
       </div>
