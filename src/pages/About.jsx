@@ -17,19 +17,18 @@ function AboutPage() {
         </NavLink>
       </nav>
       <StyledH1>About</StyledH1>
-
-      <p>Welcome to my website! My name is Dan. Here&apos;s a quick intro:</p>
-
-      <p>
-        This blog is a small passion project of mine to keep and share
-        AI-generated blog posts using entertaining and funny prompts I come up
-        with.
-      </p>
-
-      <p>
-        I&apos;m a web developer based out of Massachusetts. I previously worked
-        in tech sales before committing to a career change in web development! I
-        have experience in using the following tools:
+      <div>
+        <p>Welcome to my website! My name is Dan. Here&apos;s a quick intro:</p>
+        <p>
+          This blog is a small passion project of mine to keep and share
+          AI-generated blog posts using entertaining and funny prompts I come up
+          with.
+        </p>
+        <p>
+          I&apos;m a web developer based out of Massachusetts. I previously
+          worked in tech sales before committing to a career change in web
+          development! I have experience in using the following tools:
+        </p>
         <ul>
           <li>Javascript</li>
           <li>NodeJS</li>
@@ -42,7 +41,7 @@ function AboutPage() {
           <li>HTML</li>
           <li>CSS</li>
         </ul>{" "}
-      </p>
+      </div>
     </div>
   );
 }

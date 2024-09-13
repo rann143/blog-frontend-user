@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import { DateTime } from "luxon";
 import BlogPostCard from "../components/BlogPostCard";
 import "../styles/blogpost.css";
+import "../styles/App.css";
 import styled from "styled-components";
 
 const StyledH1 = styled.h1`
@@ -75,7 +76,7 @@ function AllPosts() {
         <NavLink to="/home" className="blog-navlink">
           Home
         </NavLink>
-        <NavLink to="/about" className="navlink">
+        <NavLink to="/about" className="blog-navlink">
           About
         </NavLink>
       </nav>
