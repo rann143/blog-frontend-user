@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LogOutBtn from "./LogoutBtn";
+import "../styles/App.css";
 
 function LoginForm({
   isLoggedIn,
@@ -62,25 +63,31 @@ function LoginForm({
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username-input">Username</label>
-        <input
-          type="text"
-          name="username"
-          id="username-input"
-          onChange={handleInputChange}
-          required
-        />
+    <div className="form-page">
+      <h1>Login</h1>
 
-        <label htmlFor="password-input">Password</label>
-        <input
-          type="password"
-          name="password"
-          id="password-input"
-          onChange={handleInputChange}
-          required
-        />
+      <form onSubmit={handleSubmit} className="form-display">
+        <div className="form-input">
+          <label htmlFor="username-input">Username</label>
+          <input
+            type="text"
+            name="username"
+            id="username-input"
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+
+        <div className="form-input">
+          <label htmlFor="password-input">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password-input"
+            onChange={handleInputChange}
+            required
+          />
+        </div>
 
         <button type="submit">Login</button>
       </form>

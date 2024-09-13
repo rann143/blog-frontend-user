@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import "../styles/App.css";
 
 function SignUpForm() {
   const [formData, setFormData] = useState({});
@@ -48,63 +49,79 @@ function SignUpForm() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="first-name-input">First Name</label>
-        <input
-          type="text"
-          name="first_name"
-          id="first-name-input"
-          onChange={handleInputChange}
-          required
-        />
+    <div className="form-page">
+      <h1>Sign Up</h1>
 
-        <label htmlFor="last-name-input">Last Name</label>
-        <input
-          type="text"
-          name="last_name"
-          id="last-name-input"
-          onChange={handleInputChange}
-          required
-        />
+      <form onSubmit={handleSubmit} className="form-display">
+        <div className="form-input">
+          <label htmlFor="first-name-input">First Name</label>
+          <input
+            type="text"
+            name="first_name"
+            id="first-name-input"
+            onChange={handleInputChange}
+            required
+          />
+        </div>
 
-        <label htmlFor="email-input">Email</label>
-        <input
-          type="email"
-          name="email"
-          id="email-input"
-          onChange={handleInputChange}
-          required
-        />
+        <div className="form-input">
+          <label htmlFor="last-name-input">Last Name</label>
+          <input
+            type="text"
+            name="last_name"
+            id="last-name-input"
+            onChange={handleInputChange}
+            required
+          />
+        </div>
 
-        <label htmlFor="username-input">Username</label>
-        <input
-          type="text"
-          name="username"
-          id="username-input"
-          onChange={handleInputChange}
-          required
-        />
+        <div className="form-input">
+          <label htmlFor="email-input">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email-input"
+            onChange={handleInputChange}
+            required
+          />
+        </div>
 
-        <label htmlFor="password-input">Password</label>
-        <input
-          type="password"
-          name="password"
-          id="password-input"
-          onChange={handleInputChange}
-          required
-        />
+        <div className="form-input">
+          <label htmlFor="username-input">Username</label>
+          <input
+            type="text"
+            name="username"
+            id="username-input"
+            onChange={handleInputChange}
+            required
+          />
+        </div>
 
-        <label htmlFor="confirm_password-input">Confirm Password</label>
-        <input
-          type="password"
-          name="confirm_password"
-          id="confirm_password-input"
-          onChange={handleInputChange}
-          required
-        />
+        <div className="form-input">
+          <label htmlFor="password-input">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password-input"
+            onChange={handleInputChange}
+            required
+          />
+        </div>
 
-        <button type="submit">Sign Up</button>
+        <div className="form-input">
+          <label htmlFor="confirm_password-input">Confirm Password</label>
+          <input
+            type="password"
+            name="confirm_password"
+            id="confirm_password-input"
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+
+        <div>
+          <button type="submit">Sign Up</button>
+        </div>
       </form>
       <p>{message ? message : ""}</p>
       <Link to="/home">Return Home</Link>
