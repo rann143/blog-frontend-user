@@ -8,6 +8,7 @@ import styled from "styled-components";
 const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
+  margin: 1rem;
   width: 100%;
 `;
 
@@ -42,33 +43,33 @@ function Home({ isLoggedIn, setIsLoggedIn, checkIfLoggedIn }) {
             Blog
           </NavLink>
         </div>
-      </Nav>
 
-      <div className="link-container">
-        {!isLoggedIn ? (
-          <>
-            <NavLink to="/sign-up" className="navlink">
-              Sign Up
-            </NavLink>{" "}
-            <br />
-          </>
-        ) : (
-          ""
-        )}
-        {!isLoggedIn ? (
-          <>
-            <NavLink to="/login" className="navlink">
-              Login
-            </NavLink>
-          </>
-        ) : (
-          <>
-            <NavLink to="/logout" className="navlink">
-              Logout
-            </NavLink>
-          </>
-        )}
-      </div>
+        <div className="link-container">
+          {!isLoggedIn ? (
+            <>
+              <NavLink to="/sign-up" className="navlink">
+                Sign Up
+              </NavLink>{" "}
+              <br />
+            </>
+          ) : (
+            ""
+          )}
+          {!isLoggedIn ? (
+            <>
+              <NavLink to="/login" className="navlink">
+                Login
+              </NavLink>
+            </>
+          ) : (
+            <>
+              <NavLink to="/logout" className="navlink">
+                Logout
+              </NavLink>
+            </>
+          )}
+        </div>
+      </Nav>
 
       <div className="home-container">
         <div className="home-content">
