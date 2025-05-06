@@ -75,14 +75,7 @@ function Home({ isLoggedIn, setIsLoggedIn, checkIfLoggedIn }) {
         <div className="home-content">
           <p>{firstName ? `Hi ${firstName}!` : ""}</p>
           <StyledH1 style={{ width: "100%" }}>Welcome to my World!</StyledH1>
-          <p className="quote-p">
-            <q>
-              Two things are infinite: the universe and human stupidity; and
-              I&apos;m not sure about the universe.
-            </q>
-            <br />
-            <span>- Albert Einstein</span>
-          </p>
+          <p className="quote-p"></p>
         </div>
       </div>
       <footer>
